@@ -3,7 +3,10 @@ package cmd
 import (
 	application "github.com/otaviohenrique/go-app-example/pkg"
 	"github.com/otaviohenrique/go-app-example/pkg/adapters"
+	"github.com/otaviohenrique/go-app-example/pkg/config"
 	"github.com/otaviohenrique/go-app-example/pkg/controller"
+	"github.com/otaviohenrique/go-app-example/pkg/logger"
+	"github.com/otaviohenrique/go-app-example/pkg/metrics"
 	"github.com/spf13/cobra"
 	"os"
 	"os/signal"
@@ -16,9 +19,9 @@ var runCmd = &cobra.Command{
 	Short: "Run application",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
-		config := application.NewConfig("go-app-name")
-		logger := application.NewLogger()
-		metrics := application.NewMetrics()
+		config := config.NewConfig("go-app-name")
+		logger := logger.NewLogger()
+		metrics := metrics.NewMetrics()
 
 		consumer := adapters.NewSqsConsumer()
 		producer := adapters.NewSqsProducer()
