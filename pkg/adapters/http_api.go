@@ -3,7 +3,7 @@ package adapters
 import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/httplog"
-	application "github.com/otaviohenrique/go-app-example/pkg"
+	"github.com/otaviohenrique/go-app-example/pkg/config"
 	"github.com/otaviohenrique/go-app-example/pkg/controller"
 	"go.uber.org/zap"
 	"net/http"
@@ -12,12 +12,12 @@ import (
 type HttpApi struct {
 	userController *controller.UserController
 	logger         *zap.SugaredLogger
-	config         *application.Config
+	config         *config.Config
 }
 
 // HTTP or any other external-world communication adapter should work just as "router" calling the received controller
 // Any logic related to schema validation is its responsability too.
-func NewHttpApi(userController *controller.UserController, logger *zap.SugaredLogger, config *application.Config) *HttpApi {
+func NewHttpApi(userController *controller.UserController, logger *zap.SugaredLogger, config *config.Config) *HttpApi {
 	api := new(HttpApi)
 
 	api.userController = userController

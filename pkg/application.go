@@ -1,6 +1,8 @@
 package application
 
 import (
+	"github.com/otaviohenrique/go-app-example/pkg/config"
+	"github.com/otaviohenrique/go-app-example/pkg/metrics"
 	"github.com/otaviohenrique/go-app-example/pkg/ports"
 	"go.uber.org/zap"
 	"os"
@@ -17,12 +19,12 @@ type Application struct {
 	consumer ports.Consumer
 	producer ports.Producer
 	logger   *zap.SugaredLogger
-	config   *Config
-	metrics  *Metrics
+	config   *config.Config
+	metrics  *metrics.Metrics
 	osSign   chan os.Signal
 }
 
-func NewApp(api ports.Api, consumer ports.Consumer, producer ports.Producer, logger *zap.SugaredLogger, config *Config, metrics *Metrics, sig chan os.Signal) *Application {
+func NewApp(api ports.Api, consumer ports.Consumer, producer ports.Producer, logger *zap.SugaredLogger, config *config.Config, metrics *metrics.Metrics, sig chan os.Signal) *Application {
 	app := new(Application)
 
 	app.api = api
