@@ -3,7 +3,7 @@ module github.com/otaviohenrique/go-app-example
 go 1.19
 
 require (
-	github.com/go-chi/chi/v5 v5.0.8
+	github.com/go-chi/chi/v5 v5.0.11
 	github.com/go-chi/httplog v0.3.0
 	github.com/spf13/cobra v1.7.0
 	go.uber.org/zap v1.26.0
